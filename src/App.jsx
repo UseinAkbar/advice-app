@@ -6,6 +6,7 @@ function App() {
   const [advice, setAdvice] = useState('');
   const [isDone, setDone] = useState(false);
 
+
   function fetchAdvice() {
     axios.get('https://api.adviceslip.com/advice')
       .then(response => {
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className='app'>
       <div className='card'>
-        {isDone ? <h1 className='heading'>{advice}</h1> : <h1 className='heading set'>Motivate your days with some advice..</h1>}
+        {isDone ? <h1 className='heading advice'>{advice}</h1> : <h1 className='heading set'>Motivate your days with some advice..</h1>}
         <button className='button' onClick={() => {
           fetchAdvice();
           setDone(true);

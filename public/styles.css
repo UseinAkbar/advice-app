@@ -17,23 +17,33 @@
 }
 
 .card {
-  background: whitesmoke;
+  background: rgba(169, 169, 169, .1);
   width: 38%;
   height: 20%;
+  color: whitesmoke;
   display: flex;
   align-items: center;
   flex-direction: column;
   border-radius: 25px;
   padding: 2%;
-  box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.5), inset 0px 0px 8px 1px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  box-shadow: 0px 0px 8px 4px rgba(169, 169, 169, .2), inset 0px 0px 8px 1px rgba(0, 0, 0, .4), inset 0px 0px 8px 4px rgba(169, 169, 169, .2);
+  animation: fadeIn .6s ease-in 1 alternate forwards;
 }
 
 .heading {
   display: flex;
   align-items: center;
   height: 582px;
+  position: relative;
   font-size: 1.1rem;
   font-family: 'Spartan', sans-serif;
+  opacity: 0;
+  animation: fadeHead .6s ease-in .5s 1 alternate forwards;
+}
+
+.advice {
+    animation: setHead .6s ease-in 1 alternate forwards;
 }
 
 h1.set {
@@ -55,20 +65,21 @@ h1.set {
   opacity: 1;
   background-color: #ffffff;
   border: 1px solid rgba(22, 76, 167, 0.6);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .button span {
-  color: #164ca7;
+  color: rgba(25,25,112, 1);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.7px;
+  filter: drop-shadow(0 0 2px rgba(169,169,169, .5));
   font-family: 'Spartan', sans-serif;
 }
 
 .button:hover {
   animation: rotate 0.7s ease-in-out both;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .button:hover span {
@@ -76,7 +87,35 @@ h1.set {
   animation-delay: 0.06s;
 }
 
+.button:active {
+  animation: rotate2 0.7s ease-in-out both;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.button:active span {
+  animation: storm2 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
 @keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rotate2 {
   0% {
     transform: rotate(0deg) translate3d(0, 0, 0);
   }
@@ -112,6 +151,51 @@ h1.set {
   }
 }
 
+@keyframes storm2 {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+
+    opacity: 0
+  }
+
+  100% {
+
+    opacity: 1
+  }
+}
+
+@keyframes fadeHead {
+  0% {
+    transform: scale(0.5);
+    bottom: -20px;
+    opacity: 0
+  }
+  100% {
+    transform: scale(1);
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+
+
 @media only screen and (max-width: 600px) {
   .card {
       width: 80%;
@@ -123,5 +207,22 @@ h1.set {
   .button {
     height: 160px;
     width: 186px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .card {
+      background: rgba(169, 169, 169, 0);
+      width: 70%;
+      height: 30%;
+      box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, .3), inset 0px 0px 6px 2px rgba(169, 169, 169, .2);
+  }
+  .heading {
+    font-size: 1rem;
+  }
+  .button {
+    height: 160px;
+    width: 186px;
+    box-shadow: inset 0, 0, 2px, 6px, rgba(169, 169, 169, .4)
   }
 }

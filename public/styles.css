@@ -43,7 +43,7 @@
 }
 
 .advice {
-    animation: setHead .6s ease-in 1 alternate forwards;
+    opacity: 1;
 }
 
 h1.set {

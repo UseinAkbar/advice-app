@@ -7,7 +7,7 @@ function App() {
   const [isDone, setDone] = useState(false);
 
 
-  function fetchAdvice() {
+function fetchAdvice() {
     axios.get('https://api.adviceslip.com/advice')
       .then(response => {
         const {advice} = response.data.slip;
